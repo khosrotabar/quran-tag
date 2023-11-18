@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "QuranFont";
+    src: url("/src/assets/fonts/QuranFont.woff");
+  }
+  @font-face {
+    font-family: "IranYekan";
+    src: url("/src/assets/fonts/iranyekanregular.woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "IranYekan";
+    src: url("/src/assets/fonts/iranyekanweblight.woff");
+    font-weight: 300;
+    font-style: light;
+  }
+  @font-face {
+    font-family: "IranYekan";
+    src: url("/src/assets/fonts/iranyekanwebbold.woff");
+    font-weight: 700;
+    font-style: bold;
+  }
+  #root {
+    isolation: isolate;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    font-family: "QuranFont";
+  }
+
+  body {
+    background-color: #e8ddcb;
+  }
+}
