@@ -39,4 +39,29 @@
   body {
     background-color: #e8ddcb;
   }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #397524 #dfe9eb;
+  }
+
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background-color: #dfe9eb;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: #aaa5a5;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #80a374;
+  }
 }
