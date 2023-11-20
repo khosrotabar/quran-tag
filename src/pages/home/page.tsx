@@ -6,10 +6,9 @@ const Home = () => {
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const urlPage = parseInt(urlParams.get("page")!);
-  const maxPage =
-    quran_data[quran_data.length - 1].data[
-      quran_data[quran_data.length - 1].data.length - 1
-    ].page;
+  const quranSuraLength = quran_data.length - 1;
+  const quranLastDataLength = quran_data[quranSuraLength].data.length - 1;
+  const maxPage = quran_data[quranSuraLength].data[quranLastDataLength].page;
   let page;
 
   if (urlPage > 0 && urlPage < maxPage) {

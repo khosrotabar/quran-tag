@@ -4,7 +4,7 @@ import { quran_data } from "@/data";
 import { convertToFarsiDigits } from "@/util";
 import VerseItem from "./VerseItem";
 import Header from "../header";
-import IslamicBanner from "@/assets/images/vecteezy_islamic-banner.png";
+import IslamicBanner from "@/assets/images/vecteezy_islamic-banner.webp";
 
 type VrsesListProps = {
   page: number;
