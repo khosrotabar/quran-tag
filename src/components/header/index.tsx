@@ -8,15 +8,16 @@ import QuranTag from "./QuranTag";
 type HeaderProps = {
   page: number;
   lastPage: number;
+  isLoading: boolean;
 };
 
-const Header: React.FC<HeaderProps> = ({ page, lastPage }) => {
+const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
   const [inputVal, setInputVal] = useState<number | undefined>(undefined);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setInputVal(page);
-  }, [page]);
+    !isLoading && setInputVal(page);
+  }, [page, isLoading]);
 
   const inputHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -60,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage }) => {
         </div>
       </div>
       <div className="absolute right-0 top-0 flex h-[46px] w-[50%] items-center justify-center rounded-r-[10px] bg-[#003648]">
-        <QuranList page={page} />
+        {!isLoading && <QuranList page={page} />}
       </div>
     </div>
   );
