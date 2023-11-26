@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
     }
   };
 
-  const arrowhnadler = (value: string) => {
+  const arrowHandler = (value: string) => {
     if (value === "next" && inputVal !== lastPage) {
       navigate(`/?page=${inputVal! + 1}`);
     }
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
       <QuranTag />
       <div className="absolute left-0 top-0 h-[46px] w-[50%] rounded-l-[10px] bg-[#001633]">
         <div className="mx-auto flex h-full w-[120px]  items-center justify-between">
-          <div className="cursor-pointer" onClick={() => arrowhnadler("next")}>
+          <div className="cursor-pointer" onClick={() => arrowHandler("next")}>
             <IconContext.Provider value={{ color: "white", size: "24px" }}>
               <IoIosArrowForward />
             </IconContext.Provider>
@@ -53,7 +53,7 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
             className="w-[70px] border-none bg-inherit text-center text-sm text-white outline-none placeholder:text-white placeholder:opacity-50"
             placeholder="page"
           />
-          <div className="cursor-pointer" onClick={() => arrowhnadler("prev")}>
+          <div className="cursor-pointer" onClick={() => arrowHandler("prev")}>
             <IconContext.Provider value={{ color: "white", size: "24px" }}>
               <IoIosArrowBack />
             </IconContext.Provider>

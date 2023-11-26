@@ -19,3 +19,22 @@ export const convertToFarsiDigits = (number: string) => {
   }
   return farsiNumber;
 };
+
+export const generateArrayFromString = (
+  word: string,
+  wordId: string,
+  raw: string,
+) => {
+  const words = word.split(" ");
+  const raws = raw.split(" ");
+
+  const mappedArray = words.map((word, index) => {
+    return {
+      text: word,
+      id: wordId,
+      raw: raws[index],
+    };
+  });
+
+  return mappedArray;
+};
