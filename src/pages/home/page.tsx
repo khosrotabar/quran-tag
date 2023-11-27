@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
+import { BarLoader } from "react-spinners";
 import VrsesList from "../../components/verses-list";
 import { quran_data } from "@/data";
 import { getLastEdit } from "@/api";
-import { useEffect } from "react";
 
 const Home = () => {
   const { data, error, isLoading } = useQuery("lastEdit", getLastEdit);
@@ -15,10 +16,6 @@ const Home = () => {
   const quranLastDataLength = quran_data[quranSuraLength].data.length - 1;
   const maxPage = quran_data[quranSuraLength].data[quranLastDataLength].page;
   const navigate = useNavigate();
-
-  if (error) {
-    console.log(error); // for now
-  }
 
   useEffect(() => {
     if (data) {
@@ -35,6 +32,31 @@ const Home = () => {
     page = 1;
   } else {
     page = 1;
+  }
+
+  if (isLoading) {
+    return (
+      <div className="absolute inset-0 m-auto h-fit w-fit">
+        <BarLoader color="#003648" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div
+        dir="rtl"
+        className="flex h-screen w-screen select-none items-center justify-center"
+      >
+        <span className="rounded-md bg-red-600 px-4 py-2 text-base font-bold text-white shadow-md">
+          مشکلی در سرور بوجود آمده است. لطفا بعد از مدتی دوباره امتحان کنید.
+        </span>
+      </div>
+    );
+  }
+
+  if (!data) {
+    return null;
   }
 
   return (

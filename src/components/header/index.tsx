@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IconContext } from "react-icons";
 import QuranList from "./QuranList";
-import QuranTag from "./QuranTag";
 
 type HeaderProps = {
   page: number;
@@ -37,7 +36,6 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
 
   return (
     <div className="relative z-40 mb-4 flex h-[46px] w-full items-center justify-center rounded-[10px] bg-[#001633] font-rranyekan">
-      <QuranTag />
       <div className="absolute left-0 top-0 h-[46px] w-[50%] rounded-l-[10px] bg-[#001633]">
         <div className="mx-auto flex h-full w-[120px]  items-center justify-between">
           <div className="cursor-pointer" onClick={() => arrowHandler("next")}>

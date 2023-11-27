@@ -1,18 +1,11 @@
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ScaleLoader from "react-spinners/ScaleLoader";
 import { quran_data } from "@/data";
-import { convertToFarsiDigits, generateArrayFromString } from "@/util";
-import VerseItem from "./VerseItem";
 import Header from "../header";
 import IslamicBanner from "@/assets/images/vecteezy_islamic-banner.webp";
-import clsx from "clsx";
 import { getPage, pageOuput } from "@/api";
+import Verse from "./Verse";
+import { activeVerseProps } from "@/shared";
 
 type VrsesListProps = {
   page: number;
@@ -48,27 +41,6 @@ const VrsesList: React.FC<VrsesListProps> = ({
 
           if (data) {
             data.forEach((wordData) => {
-              const wordDataArray = wordData.word.split(" ");
-              const wordPositionArray = wordData.position.split(", ");
-              const verseDataArray = verseData.raw.split(" ");
-              for (var i = 0; i < wordDataArray.length; i++) {
-                const wordCorrectIndex = verseDataArray.findIndex(
-                  (item) =>
-                    item === wordDataArray[i] ||
-                    wordDataArray[i].includes(item) ||
-                    item.includes(wordDataArray[i]),
-                );
-                const wordCorrectIndexString = (
-                  wordCorrectIndex + 1
-                ).toString();
-                if (
-                  wordPositionArray[i] !== wordCorrectIndexString &&
-                  wordCorrectIndex >= 0
-                ) {
-                  wordPositionArray[i] = wordCorrectIndexString;
-                }
-              }
-              wordData.position = wordPositionArray.join(", ");
               wordData.id = verseData.id;
             });
             response.push(data);
@@ -81,24 +53,6 @@ const VrsesList: React.FC<VrsesListProps> = ({
 
     getPageFunc();
   }, [quranDataFiltered, page]);
-
-  const getQuranResponseObject = (word: string, wordId: string) => {
-    if (quranResponse.length !== 0) {
-      const filteredArray = quranResponse.find((response) =>
-        response.some((item) => item.id === wordId),
-      );
-
-      if (filteredArray) {
-        const foundItem = filteredArray.find(
-          (item) => item.word.includes(word) || word.includes(item.word),
-        );
-        console.log(foundItem);
-        console.log(filteredArray);
-        return foundItem;
-      }
-    }
-    return undefined;
-  };
 
   console.log(quranResponse);
 
@@ -128,39 +82,21 @@ const VrsesList: React.FC<VrsesListProps> = ({
                 </div>
               )}
               <div className="z-10 flex flex-wrap items-center justify-start gap-[10px] whitespace-pre-wrap text-[18px] font-normal">
-                {sura.data.map((verse, innerIndex) => (
-                  <Fragment key={innerIndex}>
-                    {generateArrayFromString(
-                      verse.text,
-                      verse.id,
-                      verse.raw,
-                    ).map((word, index) => {
-                      const responseObject = getQuranResponseObject(
-                        word.raw,
-                        word.id,
-                      );
-                      // const responseObject = undefined;
-                      return (
-                        <div key={verse.text + verse.id + index}>
-                          <VerseItem
-                            word={word}
-                            responseObject={responseObject}
-                          />
-                        </div>
-                      );
-                    })}
-                    <div
-                      className={clsx(
-                        "flex h-[23px] w-[23px] items-center justify-center rounded-full pt-[3px] font-rranyekan text-sm font-normal text-white",
-                        lastEditId && lastEditId === verse.id
-                          ? "bg-[#66593f]"
-                          : "bg-[#cdb380]",
-                      )}
-                    >
-                      {convertToFarsiDigits(verse.id.split("_")[1])}
-                    </div>
-                  </Fragment>
-                ))}
+                {sura.data.map((verse, innerIndex) => {
+                  const response = quranResponse.find((item) =>
+                    item.some((el) => el.id === verse.id),
+                  );
+
+                  return (
+                    <Verse
+                      key={innerIndex}
+                      verse={verse}
+                      lastEditId={lastEditId}
+                      quranResponse={response || []}
+                      innerIndex={innerIndex}
+                    />
+                  );
+                })}
               </div>
             </div>
           ))
