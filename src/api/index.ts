@@ -5,6 +5,10 @@ interface lastData {
   page: string;
 }
 
+interface submitOutput {
+  status: string;
+}
+
 export interface pageOuput {
   meaning: string;
   position: string;
@@ -23,6 +27,20 @@ export const getPage = async (
 ): Promise<pageOuput[] | undefined> => {
   try {
     const { data } = await axios.get(`/api/${page}/${verse}/`);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return undefined;
+  }
+};
+
+export const submitTags = async (
+  quranData: pageOuput[],
+  page: number,
+  id: string,
+): Promise<submitOutput | undefined> => {
+  try {
+    const { data } = await axios.post(`/api/${page}/${id}/`, quranData);
     return data;
   } catch (err) {
     console.log(err);

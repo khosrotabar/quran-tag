@@ -1,39 +1,45 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { TiTick } from "react-icons/ti";
 import { IconContext } from "react-icons";
+import { ClockLoader } from "react-spinners";
 import clsx from "clsx";
+import { toast } from "react-toastify";
 import { convertToFarsiDigits, generateArrayFromString } from "@/util";
 import VerseItem from "./VerseItem";
-import { pageOuput } from "@/api";
-import { activeVerseProps, verseProps } from "@/shared";
-
-type VerseProps = {
-  innerIndex: number;
-  verse: verseProps;
-  quranResponse: pageOuput[];
-  lastEditId: string | undefined;
-};
+import { pageOuput, submitTags } from "@/api";
+import { VerseProps, activeVerseProps } from "@/shared";
 
 const Verse: React.FC<VerseProps> = ({
   innerIndex,
   verse,
   quranResponse,
   lastEditId,
+  page,
 }) => {
   let currentArray: pageOuput[] = [...quranResponse];
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [quranResponseCopy, setQuranResponseCopy] = useState<pageOuput[]>([]);
   const [activeVerse, setActiveVerse] = useState<activeVerseProps[]>([]);
   const [reservedArray, setReservedArray] = useState<pageOuput[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
   const [isArrayChanged, setIsArrayChanged] = useState<boolean>(false);
   const bgColor =
-    lastEditId && lastEditId === verse.id && !isArrayChanged
+    lastEditId === verse.id && !isArrayChanged
       ? "bg-[#66593f]"
-      : !lastEditId || lastEditId !== verse.id
-        ? "bg-[#cdb380]"
-        : isArrayChanged
-          ? "bg-lime-600"
-          : "";
+      : "bg-[#cdb380]";
+
+  const notify = () => {
+    toast.error("!مشکلی در ارسال بوجود آمده است", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   useEffect(() => {
     if (reservedArray.length === 0) {
@@ -65,6 +71,17 @@ const Verse: React.FC<VerseProps> = ({
     }
   }, [quranResponseCopy]);
 
+  const submitHandler = async () => {
+    setIsArrayChanged(false);
+    setIsLoading(true);
+    const newArray = quranResponseCopy.map(({ id, ...rest }) => rest);
+    const data = await submitTags(newArray, page, verse.id);
+    if (!data) {
+      notify();
+    }
+    setIsLoading(false);
+  };
+
   return (
     <Fragment key={innerIndex + 1}>
       {generateArrayFromString(
@@ -94,15 +111,19 @@ const Verse: React.FC<VerseProps> = ({
       <div
         className={clsx(
           "flex h-[23px] w-[23px] items-center justify-center rounded-full pt-[3px] font-rranyekan text-sm font-normal text-white",
-          bgColor,
+          isArrayChanged ? "bg-lime-600" : bgColor,
         )}
       >
-        {isArrayChanged ? (
-          <IconContext.Provider
-            value={{ size: "22", className: "-mt-[3px] cursor-pointer" }}
-          >
-            <TiTick />
-          </IconContext.Provider>
+        {isLoading ? (
+          <ClockLoader size={19} className="mb-[3px]" color="white" />
+        ) : isArrayChanged ? (
+          <div onClick={submitHandler}>
+            <IconContext.Provider
+              value={{ size: "22", className: "-mt-[3px] cursor-pointer" }}
+            >
+              <TiTick />
+            </IconContext.Provider>
+          </div>
         ) : (
           convertToFarsiDigits(verse.id.split("_")[1])
         )}

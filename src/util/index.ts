@@ -1,4 +1,6 @@
 import { pageOuput } from "@/api";
+import { activeVerseProps } from "@/shared";
+import { Dispatch } from "react";
 
 type InputArrayItem = {
   meaning: string;
@@ -115,4 +117,57 @@ export const transformArray = (
   });
 
   return Object.values(groupedItems);
+};
+
+export const reservedArrayHandler = (
+  reservedArray: pageOuput[],
+  index: number,
+  meaning: string,
+  word: {
+    text: string;
+    id: string;
+  },
+  setReservedArray: Dispatch<pageOuput[]>,
+) => {
+  const isSame = reservedArray.some(
+    (item) => item.position === (index + 1).toString(),
+  );
+
+  const updatedArray = isSame
+    ? reservedArray.filter((item) => item.position !== (index + 1).toString())
+    : [
+        ...reservedArray,
+        {
+          meaning: meaning !== "" ? meaning : "",
+          word: word.text,
+          position: (index + 1).toString(),
+          id: word.id,
+        },
+      ];
+
+  setReservedArray(updatedArray);
+};
+
+export const activeVersehandler = (
+  activeVerse: activeVerseProps[],
+  index: number,
+  word: {
+    text: string;
+    id: string;
+  },
+  setActiveVerse: Dispatch<activeVerseProps[]>,
+) => {
+  const isSame = activeVerse.some((item) => item.position === index);
+
+  const updatedArray = isSame
+    ? activeVerse.filter((item) => item.position !== index)
+    : [
+        ...activeVerse,
+        {
+          position: index,
+          id: word.id,
+        },
+      ];
+
+  setActiveVerse(updatedArray);
 };

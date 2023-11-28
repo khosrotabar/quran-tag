@@ -5,13 +5,7 @@ import Header from "../header";
 import IslamicBanner from "@/assets/images/vecteezy_islamic-banner.webp";
 import { getPage, pageOuput } from "@/api";
 import Verse from "./Verse";
-import { activeVerseProps } from "@/shared";
-
-type VrsesListProps = {
-  page: number;
-  isLoading: boolean;
-  lastEditId: string | undefined;
-};
+import { VrsesListProps } from "@/shared";
 
 const VrsesList: React.FC<VrsesListProps> = ({
   page,
@@ -47,14 +41,11 @@ const VrsesList: React.FC<VrsesListProps> = ({
           }
         }
       }
-
       setQuranResponse(response);
     };
 
     getPageFunc();
   }, [quranDataFiltered, page]);
-
-  console.log(quranResponse);
 
   return (
     <div className="mx-auto flex h-screen w-[600px] items-center justify-center font-quranfont">
@@ -94,6 +85,7 @@ const VrsesList: React.FC<VrsesListProps> = ({
                       lastEditId={lastEditId}
                       quranResponse={response || []}
                       innerIndex={innerIndex}
+                      page={page}
                     />
                   );
                 })}

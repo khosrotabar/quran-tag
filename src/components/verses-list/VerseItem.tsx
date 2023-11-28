@@ -1,25 +1,12 @@
-import React, { Dispatch, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import { pageOuput } from "@/api";
-import { activeVerseProps } from "@/shared";
-import { deleteMeaning, transformArray } from "@/util";
-
-type VerseItemProps = {
-  index: number;
-  word: {
-    text: string;
-    id: string;
-  };
-  activeVerse: activeVerseProps[];
-  meaning: string;
-  reservedArray: pageOuput[];
-  quranResponseCopy: pageOuput[];
-  tagInput: string;
-  setQuranResponseCopy: Dispatch<pageOuput[]>;
-  setActiveVerse: Dispatch<activeVerseProps[]>;
-  setReservedArray: Dispatch<pageOuput[]>;
-  setTagInput: Dispatch<string>;
-};
+import { VerseItemProps } from "@/shared";
+import {
+  activeVersehandler,
+  deleteMeaning,
+  reservedArrayHandler,
+  transformArray,
+} from "@/util";
 
 const VerseItem: React.FC<VerseItemProps> = ({
   index,
@@ -38,48 +25,10 @@ const VerseItem: React.FC<VerseItemProps> = ({
   const [inputVal, setInputVal] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // transfer to util folder later
-  const reservedArrayHandler = () => {
-    const isSame = reservedArray.some(
-      (item) => item.position === (index + 1).toString(),
-    );
-
-    const updatedArray = isSame
-      ? reservedArray.filter((item) => item.position !== (index + 1).toString())
-      : [
-          ...reservedArray,
-          {
-            meaning: meaning !== "" ? meaning : "",
-            word: word.text,
-            position: (index + 1).toString(),
-            id: word.id,
-          },
-        ];
-
-    setReservedArray(updatedArray);
-  };
-
-  // transfer to util folder later
-  const activeVersehandler = () => {
-    const isSame = activeVerse.some((item) => item.position === index);
-
-    const updatedArray = isSame
-      ? activeVerse.filter((item) => item.position !== index)
-      : [
-          ...activeVerse,
-          {
-            position: index,
-            id: word.id,
-          },
-        ];
-
-    setActiveVerse(updatedArray);
-  };
-
   const reservedWordsHandler = () => {
     setIsClicked(!isClicked);
-    reservedArrayHandler();
-    activeVersehandler();
+    reservedArrayHandler(reservedArray, index, meaning, word, setReservedArray);
+    activeVersehandler(activeVerse, index, word, setActiveVerse);
     if (meaning !== "") {
       setTagInput(meaning);
     }
