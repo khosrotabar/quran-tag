@@ -93,7 +93,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
           <div className="absolute z-10">
             <input
               type="text"
-              className="w-[100px] rounded-md border-2 border-slate-800 bg-white px-2 py-1 text-sm outline-none"
+              className="w-[300px] rounded-md border-2 border-slate-800 bg-white px-2 py-1 text-sm outline-none"
               placeholder="معنی"
               onKeyUp={keyboardHandler}
               value={inputVal}

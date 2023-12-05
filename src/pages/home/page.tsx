@@ -17,6 +17,32 @@ const Home = () => {
   const maxPage = quran_data[quranSuraLength].data[quranLastDataLength].page;
   const navigate = useNavigate();
 
+  // javascript - temporary function
+
+  // const quranArrayHandler = () => {
+  //   const quranDataCopy = [...quran_data];
+  //   let page = 0;
+
+  //   for (const quranData of quranDataCopy) {
+  //     page++;
+  //     quranData.title.page = page;
+  //     quranData.title.currentPage = page;
+  //     quranData.data[0].currentPage = page;
+  //     for (var i = 1; i < quranData.data.length; i++) {
+  //       page++;
+  //       quranData.data[i].currentPage = page;
+  //     }
+  //   }
+
+  //   console.log(quranDataCopy);
+  // };
+
+  // useEffect(() => {
+  //   quranArrayHandler();
+  // }, []);
+
+  // javascript - temporary function
+
   useEffect(() => {
     if (data) {
       const lastEditpage = data.page;

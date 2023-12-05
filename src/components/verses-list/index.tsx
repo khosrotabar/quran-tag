@@ -20,7 +20,7 @@ const VrsesList: React.FC<VrsesListProps> = ({
     return quran_data
       .map((sura) => ({
         ...sura,
-        data: sura.data.filter((verse) => verse.page === page),
+        data: sura.data.filter((verse) => verse.currentPage === page),
       }))
       .filter((sura) => sura.data.length > 0);
   }, [quran_data, page]);
@@ -31,7 +31,7 @@ const VrsesList: React.FC<VrsesListProps> = ({
 
       for (const suraData of quranDataFiltered) {
         for (const verseData of suraData.data) {
-          const data = await getPage(page, verseData.id);
+          const data = await getPage(verseData.page, verseData.id);
 
           if (data) {
             data.forEach((wordData) => {
@@ -49,7 +49,7 @@ const VrsesList: React.FC<VrsesListProps> = ({
 
   return (
     <div className="mx-auto flex h-screen w-[600px] items-center justify-center font-quranfont">
-      <div className="h-[90%] w-full overflow-y-auto rounded-[10px] bg-orange-50 px-[16px] py-[10px] shadow-md">
+      <div className="h-[45%] w-full overflow-y-auto rounded-[10px] bg-orange-50 px-[16px] py-[10px] shadow-md">
         <Header page={page} lastPage={lastPage} isLoading={isLoading} />
         {!isLoading ? (
           quranDataFiltered.map((sura, index) => (
