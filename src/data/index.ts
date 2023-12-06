@@ -177,7 +177,7 @@ export const quran_data = [
   {
     title: {
       text: "البقرة",
-      page: 8,
+      page: 2,
       currentPage: 8,
     },
     data: [
@@ -2188,7 +2188,7 @@ export const quran_data = [
   {
     title: {
       text: "آل‌عمران",
-      page: 294,
+      page: 50,
       currentPage: 294,
     },
     data: [
@@ -3597,7 +3597,7 @@ export const quran_data = [
   {
     title: {
       text: "النساء",
-      page: 494,
+      page: 77,
       currentPage: 494,
     },
     data: [
@@ -4838,7 +4838,7 @@ export const quran_data = [
   {
     title: {
       text: "المائدة",
-      page: 670,
+      page: 106,
       currentPage: 670,
     },
     data: [
@@ -5687,7 +5687,7 @@ export const quran_data = [
   {
     title: {
       text: "الأنعام",
-      page: 790,
+      page: 128,
       currentPage: 790,
     },
     data: [
@@ -6851,7 +6851,7 @@ export const quran_data = [
   {
     title: {
       text: "الأعراف",
-      page: 955,
+      page: 151,
       currentPage: 955,
     },
     data: [
@@ -8302,7 +8302,7 @@ export const quran_data = [
   {
     title: {
       text: "الأنفال",
-      page: 1161,
+      page: 177,
       currentPage: 1161,
     },
     data: [
@@ -8836,7 +8836,7 @@ export const quran_data = [
   {
     title: {
       text: "التوبة",
-      page: 1236,
+      page: 187,
       currentPage: 1236,
     },
     data: [
@@ -9748,7 +9748,7 @@ export const quran_data = [
   {
     title: {
       text: "یونس",
-      page: 1365,
+      page: 208,
       currentPage: 1365,
     },
     data: [
@@ -10520,7 +10520,7 @@ export const quran_data = [
   {
     title: {
       text: "هود",
-      page: 1474,
+      page: 221,
       currentPage: 1474,
     },
     data: [
@@ -11390,7 +11390,7 @@ export const quran_data = [
   {
     title: {
       text: "یوسف",
-      page: 1597,
+      page: 235,
       currentPage: 1597,
     },
     data: [
@@ -12176,7 +12176,7 @@ export const quran_data = [
   {
     title: {
       text: "الرعد",
-      page: 1708,
+      page: 249,
       currentPage: 1708,
     },
     data: [
@@ -12486,7 +12486,7 @@ export const quran_data = [
   {
     title: {
       text: "إبراهیم",
-      page: 1751,
+      page: 255,
       currentPage: 1751,
     },
     data: [
@@ -12859,7 +12859,7 @@ export const quran_data = [
   {
     title: {
       text: "الحجر",
-      page: 1803,
+      page: 262,
       currentPage: 1803,
     },
     data: [
@@ -13561,7 +13561,7 @@ export const quran_data = [
   {
     title: {
       text: "النحل",
-      page: 1902,
+      page: 267,
       currentPage: 1902,
     },
     data: [
@@ -14466,7 +14466,7 @@ export const quran_data = [
   {
     title: {
       text: "الإسراء",
-      page: 2030,
+      page: 282,
       currentPage: 2030,
     },
     data: [
@@ -15252,7 +15252,7 @@ export const quran_data = [
   {
     title: {
       text: "الكهف",
-      page: 2141,
+      page: 293,
       currentPage: 2141,
     },
     data: [
@@ -16031,7 +16031,7 @@ export const quran_data = [
   {
     title: {
       text: "مریم",
-      page: 2251,
+      page: 305,
       currentPage: 2251,
     },
     data: [
@@ -16726,7 +16726,7 @@ export const quran_data = [
   {
     title: {
       text: "طه",
-      page: 2349,
+      page: 312,
       currentPage: 2349,
     },
     data: [
@@ -17680,7 +17680,7 @@ export const quran_data = [
   {
     title: {
       text: "الأنبیاء",
-      page: 2484,
+      page: 322,
       currentPage: 2484,
     },
     data: [
@@ -18473,7 +18473,7 @@ export const quran_data = [
   {
     title: {
       text: "الحج",
-      page: 2596,
+      page: 332,
       currentPage: 2596,
     },
     data: [
@@ -19028,7 +19028,7 @@ export const quran_data = [
   {
     title: {
       text: "المؤمنون",
-      page: 2674,
+      page: 342,
       currentPage: 2674,
     },
     data: [
@@ -19863,7 +19863,7 @@ export const quran_data = [
   {
     title: {
       text: "النور",
-      page: 2792,
+      page: 350,
       currentPage: 2792,
     },
     data: [
@@ -20320,7 +20320,7 @@ export const quran_data = [
   {
     title: {
       text: "الفرقان",
-      page: 2856,
+      page: 359,
       currentPage: 2856,
     },
     data: [
@@ -20868,7 +20868,7 @@ export const quran_data = [
   {
     title: {
       text: "الشعراء",
-      page: 2933,
+      page: 367,
       currentPage: 2933,
     },
     data: [
@@ -22466,7 +22466,7 @@ export const quran_data = [
   {
     title: {
       text: "النمل",
-      page: 3160,
+      page: 377,
       currentPage: 3160,
     },
     data: [
@@ -23126,7 +23126,7 @@ export const quran_data = [
   {
     title: {
       text: "القصص",
-      page: 3253,
+      page: 385,
       currentPage: 3253,
     },
     data: [
@@ -23751,7 +23751,7 @@ export const quran_data = [
   {
     title: {
       text: "العنكبوت",
-      page: 3341,
+      page: 396,
       currentPage: 3341,
     },
     data: [
@@ -24243,7 +24243,7 @@ export const quran_data = [
   {
     title: {
       text: "الروم",
-      page: 3410,
+      page: 404,
       currentPage: 3410,
     },
     data: [
@@ -24672,7 +24672,7 @@ export const quran_data = [
   {
     title: {
       text: "لقمان",
-      page: 3470,
+      page: 411,
       currentPage: 3470,
     },
     data: [
@@ -24919,7 +24919,7 @@ export const quran_data = [
   {
     title: {
       text: "السجدة",
-      page: 3504,
+      page: 415,
       currentPage: 3504,
     },
     data: [
@@ -25138,7 +25138,7 @@ export const quran_data = [
   {
     title: {
       text: "الأحزاب",
-      page: 3534,
+      page: 418,
       currentPage: 3534,
     },
     data: [
@@ -25658,7 +25658,7 @@ export const quran_data = [
   {
     title: {
       text: "سبإ",
-      page: 3607,
+      page: 428,
       currentPage: 3607,
     },
     data: [
@@ -26045,7 +26045,7 @@ export const quran_data = [
   {
     title: {
       text: "فاطر",
-      page: 3661,
+      page: 434,
       currentPage: 3661,
     },
     data: [
@@ -26369,7 +26369,7 @@ export const quran_data = [
   {
     title: {
       text: "یس",
-      page: 3706,
+      page: 440,
       currentPage: 3706,
     },
     data: [
@@ -26959,7 +26959,7 @@ export const quran_data = [
   {
     title: {
       text: "الصافات",
-      page: 3789,
+      page: 446,
       currentPage: 3789,
     },
     data: [
@@ -28242,7 +28242,7 @@ export const quran_data = [
   {
     title: {
       text: "ص",
-      page: 3971,
+      page: 453,
       currentPage: 3971,
     },
     data: [
@@ -28867,7 +28867,7 @@ export const quran_data = [
   {
     title: {
       text: "الزمر",
-      page: 4059,
+      page: 458,
       currentPage: 4059,
     },
     data: [
@@ -29401,7 +29401,7 @@ export const quran_data = [
   {
     title: {
       text: "غافر",
-      page: 4134,
+      page: 467,
       currentPage: 4134,
     },
     data: [
@@ -30005,7 +30005,7 @@ export const quran_data = [
   {
     title: {
       text: "فصلت",
-      page: 4219,
+      page: 477,
       currentPage: 4219,
     },
     data: [
@@ -30392,7 +30392,7 @@ export const quran_data = [
   {
     title: {
       text: "الشوری",
-      page: 4273,
+      page: 483,
       currentPage: 4273,
     },
     data: [
@@ -30772,7 +30772,7 @@ export const quran_data = [
   {
     title: {
       text: "الزخرف",
-      page: 4326,
+      page: 489,
       currentPage: 4326,
     },
     data: [
@@ -31404,7 +31404,7 @@ export const quran_data = [
   {
     title: {
       text: "الدخان",
-      page: 4415,
+      page: 496,
       currentPage: 4415,
     },
     data: [
@@ -31826,7 +31826,7 @@ export const quran_data = [
   {
     title: {
       text: "الجاثیة",
-      page: 4474,
+      page: 499,
       currentPage: 4474,
     },
     data: [
@@ -32094,7 +32094,7 @@ export const quran_data = [
   {
     title: {
       text: "الأحقاف",
-      page: 4511,
+      page: 502,
       currentPage: 4511,
     },
     data: [
@@ -32348,7 +32348,7 @@ export const quran_data = [
   {
     title: {
       text: "محمد",
-      page: 4546,
+      page: 507,
       currentPage: 4546,
     },
     data: [
@@ -32623,7 +32623,7 @@ export const quran_data = [
   {
     title: {
       text: "الفتح",
-      page: 4584,
+      page: 511,
       currentPage: 4584,
     },
     data: [
@@ -32835,7 +32835,7 @@ export const quran_data = [
   {
     title: {
       text: "الحجرات",
-      page: 4613,
+      page: 515,
       currentPage: 4613,
     },
     data: [
@@ -32970,7 +32970,7 @@ export const quran_data = [
   {
     title: {
       text: "ق",
-      page: 4631,
+      page: 518,
       currentPage: 4631,
     },
     data: [
@@ -33294,7 +33294,7 @@ export const quran_data = [
   {
     title: {
       text: "الذاریات",
-      page: 4676,
+      page: 520,
       currentPage: 4676,
     },
     data: [
@@ -33723,7 +33723,7 @@ export const quran_data = [
   {
     title: {
       text: "الطور",
-      page: 4736,
+      page: 523,
       currentPage: 4736,
     },
     data: [
@@ -34075,7 +34075,7 @@ export const quran_data = [
   {
     title: {
       text: "النجم",
-      page: 4785,
+      page: 526,
       currentPage: 4785,
     },
     data: [
@@ -34518,7 +34518,7 @@ export const quran_data = [
   {
     title: {
       text: "القمر",
-      page: 4847,
+      page: 528,
       currentPage: 4847,
     },
     data: [
@@ -34912,7 +34912,7 @@ export const quran_data = [
   {
     title: {
       text: "الرحمن",
-      page: 4902,
+      page: 531,
       currentPage: 4902,
     },
     data: [
@@ -35467,7 +35467,7 @@ export const quran_data = [
   {
     title: {
       text: "الواقعة",
-      page: 4980,
+      page: 534,
       currentPage: 4980,
     },
     data: [
@@ -36148,7 +36148,7 @@ export const quran_data = [
   {
     title: {
       text: "الحدید",
-      page: 5076,
+      page: 537,
       currentPage: 5076,
     },
     data: [
@@ -36360,7 +36360,7 @@ export const quran_data = [
   {
     title: {
       text: "المجادلة",
-      page: 5105,
+      page: 542,
       currentPage: 5105,
     },
     data: [
@@ -36523,7 +36523,7 @@ export const quran_data = [
   {
     title: {
       text: "الحشر",
-      page: 5127,
+      page: 545,
       currentPage: 5127,
     },
     data: [
@@ -36700,7 +36700,7 @@ export const quran_data = [
   {
     title: {
       text: "الممتحنة",
-      page: 5151,
+      page: 549,
       currentPage: 5151,
     },
     data: [
@@ -36800,7 +36800,7 @@ export const quran_data = [
   {
     title: {
       text: "الصف",
-      page: 5164,
+      page: 551,
       currentPage: 5164,
     },
     data: [
@@ -36907,7 +36907,7 @@ export const quran_data = [
   {
     title: {
       text: "الجمعة",
-      page: 5178,
+      page: 553,
       currentPage: 5178,
     },
     data: [
@@ -36993,7 +36993,7 @@ export const quran_data = [
   {
     title: {
       text: "المنافقون",
-      page: 5189,
+      page: 554,
       currentPage: 5189,
     },
     data: [
@@ -37079,7 +37079,7 @@ export const quran_data = [
   {
     title: {
       text: "التغابن",
-      page: 5200,
+      page: 556,
       currentPage: 5200,
     },
     data: [
@@ -37214,7 +37214,7 @@ export const quran_data = [
   {
     title: {
       text: "الطلاق",
-      page: 5218,
+      page: 558,
       currentPage: 5218,
     },
     data: [
@@ -37307,7 +37307,7 @@ export const quran_data = [
   {
     title: {
       text: "التحریم",
-      page: 5230,
+      page: 560,
       currentPage: 5230,
     },
     data: [
@@ -37400,7 +37400,7 @@ export const quran_data = [
   {
     title: {
       text: "الملك",
-      page: 5242,
+      page: 562,
       currentPage: 5242,
     },
     data: [
@@ -37619,7 +37619,7 @@ export const quran_data = [
   {
     title: {
       text: "القلم",
-      page: 5272,
+      page: 564,
       currentPage: 5272,
     },
     data: [
@@ -37992,7 +37992,7 @@ export const quran_data = [
   {
     title: {
       text: "الحاقة",
-      page: 5324,
+      page: 566,
       currentPage: 5324,
     },
     data: [
@@ -38365,7 +38365,7 @@ export const quran_data = [
   {
     title: {
       text: "المعارج",
-      page: 5376,
+      page: 568,
       currentPage: 5376,
     },
     data: [
@@ -38682,7 +38682,7 @@ export const quran_data = [
   {
     title: {
       text: "نوح",
-      page: 5420,
+      page: 570,
       currentPage: 5420,
     },
     data: [
@@ -38887,7 +38887,7 @@ export const quran_data = [
   {
     title: {
       text: "الجن",
-      page: 5448,
+      page: 572,
       currentPage: 5448,
     },
     data: [
@@ -39092,7 +39092,7 @@ export const quran_data = [
   {
     title: {
       text: "المزمل",
-      page: 5476,
+      page: 574,
       currentPage: 5476,
     },
     data: [
@@ -39241,7 +39241,7 @@ export const quran_data = [
   {
     title: {
       text: "المدثر",
-      page: 5496,
+      page: 575,
       currentPage: 5496,
     },
     data: [
@@ -39642,7 +39642,7 @@ export const quran_data = [
   {
     title: {
       text: "القیامة",
-      page: 5552,
+      page: 577,
       currentPage: 5552,
     },
     data: [
@@ -39931,7 +39931,7 @@ export const quran_data = [
   {
     title: {
       text: "الإنسان",
-      page: 5592,
+      page: 578,
       currentPage: 5592,
     },
     data: [
@@ -40157,7 +40157,7 @@ export const quran_data = [
   {
     title: {
       text: "المرسلات",
-      page: 5623,
+      page: 580,
       currentPage: 5623,
     },
     data: [
@@ -40516,7 +40516,7 @@ export const quran_data = [
   {
     title: {
       text: "النبإ",
-      page: 5673,
+      page: 582,
       currentPage: 5673,
     },
     data: [
@@ -40805,7 +40805,7 @@ export const quran_data = [
   {
     title: {
       text: "النازعات",
-      page: 5713,
+      page: 583,
       currentPage: 5713,
     },
     data: [
@@ -41136,7 +41136,7 @@ export const quran_data = [
   {
     title: {
       text: "عبس",
-      page: 5759,
+      page: 585,
       currentPage: 5759,
     },
     data: [
@@ -41439,7 +41439,7 @@ export const quran_data = [
   {
     title: {
       text: "التكویر",
-      page: 5801,
+      page: 586,
       currentPage: 5801,
     },
     data: [
@@ -41651,7 +41651,7 @@ export const quran_data = [
   {
     title: {
       text: "الانفطار",
-      page: 5830,
+      page: 587,
       currentPage: 5830,
     },
     data: [
@@ -41793,7 +41793,7 @@ export const quran_data = [
   {
     title: {
       text: "المطففین",
-      page: 5849,
+      page: 587,
       currentPage: 5849,
     },
     data: [
@@ -42054,7 +42054,7 @@ export const quran_data = [
   {
     title: {
       text: "الانشقاق",
-      page: 5885,
+      page: 589,
       currentPage: 5885,
     },
     data: [
@@ -42238,7 +42238,7 @@ export const quran_data = [
   {
     title: {
       text: "البروج",
-      page: 5910,
+      page: 590,
       currentPage: 5910,
     },
     data: [
@@ -42401,7 +42401,7 @@ export const quran_data = [
   {
     title: {
       text: "الطارق",
-      page: 5932,
+      page: 591,
       currentPage: 5932,
     },
     data: [
@@ -42529,7 +42529,7 @@ export const quran_data = [
   {
     title: {
       text: "الأعلی",
-      page: 5949,
+      page: 591,
       currentPage: 5949,
     },
     data: [
@@ -42671,7 +42671,7 @@ export const quran_data = [
   {
     title: {
       text: "الغاشیة",
-      page: 5968,
+      page: 592,
       currentPage: 5968,
     },
     data: [
@@ -42862,7 +42862,7 @@ export const quran_data = [
   {
     title: {
       text: "الفجر",
-      page: 5994,
+      page: 593,
       currentPage: 5994,
     },
     data: [
@@ -43081,7 +43081,7 @@ export const quran_data = [
   {
     title: {
       text: "البلد",
-      page: 6024,
+      page: 594,
       currentPage: 6024,
     },
     data: [
@@ -43230,7 +43230,7 @@ export const quran_data = [
   {
     title: {
       text: "الشمس",
-      page: 6044,
+      page: 595,
       currentPage: 6044,
     },
     data: [
@@ -43344,7 +43344,7 @@ export const quran_data = [
   {
     title: {
       text: "اللیل",
-      page: 6059,
+      page: 595,
       currentPage: 6059,
     },
     data: [
@@ -43500,7 +43500,7 @@ export const quran_data = [
   {
     title: {
       text: "الضحی",
-      page: 6080,
+      page: 596,
       currentPage: 6080,
     },
     data: [
@@ -43586,7 +43586,7 @@ export const quran_data = [
   {
     title: {
       text: "الشرح",
-      page: 6091,
+      page: 596,
       currentPage: 6091,
     },
     data: [
@@ -43651,7 +43651,7 @@ export const quran_data = [
   {
     title: {
       text: "التین",
-      page: 6099,
+      page: 597,
       currentPage: 6099,
     },
     data: [
@@ -43716,7 +43716,7 @@ export const quran_data = [
   {
     title: {
       text: "العلق",
-      page: 6107,
+      page: 597,
       currentPage: 6107,
     },
     data: [
@@ -43858,7 +43858,7 @@ export const quran_data = [
   {
     title: {
       text: "القدر",
-      page: 6126,
+      page: 598,
       currentPage: 6126,
     },
     data: [
@@ -43902,7 +43902,7 @@ export const quran_data = [
   {
     title: {
       text: "البینة",
-      page: 6131,
+      page: 598,
       currentPage: 6131,
     },
     data: [
@@ -43967,7 +43967,7 @@ export const quran_data = [
   {
     title: {
       text: "الزلزلة",
-      page: 6139,
+      page: 599,
       currentPage: 6139,
     },
     data: [
@@ -44032,7 +44032,7 @@ export const quran_data = [
   {
     title: {
       text: "العادیات",
-      page: 6147,
+      page: 599,
       currentPage: 6147,
     },
     data: [
@@ -44118,7 +44118,7 @@ export const quran_data = [
   {
     title: {
       text: "القارعة",
-      page: 6158,
+      page: 600,
       currentPage: 6158,
     },
     data: [
@@ -44204,7 +44204,7 @@ export const quran_data = [
   {
     title: {
       text: "التكاثر",
-      page: 6169,
+      page: 600,
       currentPage: 6169,
     },
     data: [
@@ -44269,7 +44269,7 @@ export const quran_data = [
   {
     title: {
       text: "العصر",
-      page: 6177,
+      page: 601,
       currentPage: 6177,
     },
     data: [
@@ -44299,7 +44299,7 @@ export const quran_data = [
   {
     title: {
       text: "الهمزة",
-      page: 6180,
+      page: 601,
       currentPage: 6180,
     },
     data: [
@@ -44371,7 +44371,7 @@ export const quran_data = [
   {
     title: {
       text: "الفیل",
-      page: 6189,
+      page: 601,
       currentPage: 6189,
     },
     data: [
@@ -44415,7 +44415,7 @@ export const quran_data = [
   {
     title: {
       text: "قریش",
-      page: 6194,
+      page: 602,
       currentPage: 6194,
     },
     data: [
@@ -44452,7 +44452,7 @@ export const quran_data = [
   {
     title: {
       text: "الماعون",
-      page: 6198,
+      page: 602,
       currentPage: 6198,
     },
     data: [
@@ -44510,7 +44510,7 @@ export const quran_data = [
   {
     title: {
       text: "الكوثر",
-      page: 6205,
+      page: 602,
       currentPage: 6205,
     },
     data: [
@@ -44540,7 +44540,7 @@ export const quran_data = [
   {
     title: {
       text: "الكافرون",
-      page: 6208,
+      page: 603,
       currentPage: 6208,
     },
     data: [
@@ -44591,7 +44591,7 @@ export const quran_data = [
   {
     title: {
       text: "النصر",
-      page: 6214,
+      page: 603,
       currentPage: 6214,
     },
     data: [
@@ -44621,7 +44621,7 @@ export const quran_data = [
   {
     title: {
       text: "المسد",
-      page: 6217,
+      page: 603,
       currentPage: 6217,
     },
     data: [
@@ -44665,7 +44665,7 @@ export const quran_data = [
   {
     title: {
       text: "الإخلاص",
-      page: 6222,
+      page: 604,
       currentPage: 6222,
     },
     data: [
@@ -44702,7 +44702,7 @@ export const quran_data = [
   {
     title: {
       text: "الفلق",
-      page: 6226,
+      page: 604,
       currentPage: 6226,
     },
     data: [

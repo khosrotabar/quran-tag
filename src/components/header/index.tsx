@@ -11,11 +11,11 @@ type HeaderProps = {
 };
 
 const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
-  const [inputVal, setInputVal] = useState<number | undefined>(undefined);
+  const [inputVal, setInputVal] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    !isLoading && setInputVal(page);
+    !isLoading && setInputVal(page.toString());
   }, [page, isLoading]);
 
   const inputHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -25,12 +25,12 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
   };
 
   const arrowHandler = (value: string) => {
-    if (value === "next" && inputVal !== lastPage) {
-      navigate(`/?page=${inputVal! + 1}`);
+    if (value === "next" && parseInt(inputVal) !== lastPage) {
+      navigate(`/?page=${parseInt(inputVal)! + 1}`);
     }
 
-    if (value === "prev" && inputVal !== 1) {
-      navigate(`/?page=${inputVal! - 1}`);
+    if (value === "prev" && parseInt(inputVal) !== 1) {
+      navigate(`/?page=${parseInt(inputVal)! - 1}`);
     }
   };
 
@@ -47,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
             type="text"
             value={inputVal}
             onKeyDown={inputHandler}
-            onChange={(e) => setInputVal(parseInt(e.target.value))}
+            onChange={(e) => setInputVal(e.target.value)}
             className="w-[70px] border-none bg-inherit text-center text-sm text-white outline-none placeholder:text-white placeholder:opacity-50"
             placeholder="page"
           />

@@ -66,7 +66,7 @@ export const generateArrayFromString = (
 
   console.log(quranResponseCopy);
 
-  console.log(mergePositions(mappedArray, quranResponseCopy));
+  // console.log(mergePositions(mappedArray, quranResponseCopy));
 
   return mergePositions(mappedArray, quranResponseCopy);
 };
@@ -81,40 +81,51 @@ const mergePositions = (
     const positions = itemB.position.split(",").map((pos) => pos.trim());
 
     if (positions.length > 1) {
-      const existingIndices = positions.map((pos) =>
-        result.findIndex((itemA) => itemA?.position === pos),
-      );
+      const sortedPositions = positions
+        .slice()
+        .sort((a: string, b: string) => parseInt(a) - parseInt(b));
 
-      const existingItems = existingIndices.map((index) =>
-        index !== -1 ? { ...result[index] } : null,
-      );
-
-      const mergedText = existingItems
-        .map((item) => (item ? item.text : ""))
-        .join(" ");
-      const mergedRaw = existingItems
-        .map((item) => (item ? item.raw : ""))
-        .join(" ");
-
-      const mergedPositions = positions.join(", ");
-
-      const updatedItemIndex = existingIndices.find((index) => index !== -1);
-
-      if (updatedItemIndex !== undefined) {
-        result[updatedItemIndex] = {
-          text: mergedText,
-          raw: mergedRaw,
-          meaning: itemB.meaning,
-          position: mergedPositions,
-          id: itemB.id || "", // Ensure id is defined
-        };
-      }
-
-      existingIndices.forEach((index) => {
-        if (index !== updatedItemIndex) {
-          result[index] = null;
-        }
+      const isConsecutive = sortedPositions.every((pos, index) => {
+        if (index === 0) return true;
+        return parseInt(pos) - parseInt(sortedPositions[index - 1]) === 1;
       });
+
+      if (isConsecutive) {
+        const existingIndices = positions.map((pos) =>
+          result.findIndex((itemA) => itemA?.position === pos),
+        );
+
+        const existingItems = existingIndices.map((index) =>
+          index !== -1 ? { ...result[index] } : null,
+        );
+
+        const mergedText = existingItems
+          .map((item) => (item ? item.text : ""))
+          .join(" ");
+        const mergedRaw = existingItems
+          .map((item) => (item ? item.raw : ""))
+          .join(" ");
+
+        const mergedPositions = positions.join(", ");
+
+        const updatedItemIndex = existingIndices.find((index) => index !== -1);
+
+        if (updatedItemIndex !== undefined) {
+          result[updatedItemIndex] = {
+            text: mergedText,
+            raw: mergedRaw,
+            meaning: itemB.meaning,
+            position: mergedPositions,
+            id: itemB.id || "", // Ensure id is defined
+          };
+        }
+
+        existingIndices.forEach((index) => {
+          if (index !== updatedItemIndex) {
+            result[index] = null;
+          }
+        });
+      }
     }
   });
 

@@ -57,7 +57,7 @@ const VrsesList: React.FC<VrsesListProps> = ({
               key={index}
               className="flex flex-col items-center justify-center gap-[16px]"
             >
-              {sura.title.page === page && (
+              {sura.title.currentPage === page && (
                 <div className="relative mt-3 flex w-full flex-col flex-wrap items-center gap-9">
                   <img
                     src={IslamicBanner}
