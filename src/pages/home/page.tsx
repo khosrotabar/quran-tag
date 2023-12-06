@@ -87,7 +87,7 @@ const Home = () => {
 
   return (
     <div dir="rtl" className="select-none">
-      <VrsesList page={page} lastEditId={data?.id} isLoading={isLoading} />
+      <VrsesList page={page} lastEditId={data?.id} isLoading={false} />
     </div>
   );
 };

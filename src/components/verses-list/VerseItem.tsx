@@ -22,7 +22,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
   setTagInput,
 }) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [inputVal, setInputVal] = useState<string>("");
+  const [inputVal, setInputVal] = useState<string | undefined>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   const reservedWordsHandler = () => {

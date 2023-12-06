@@ -16,6 +16,14 @@ export interface pageOuput {
   id?: string;
 }
 
+export interface mappedArrayProps {
+  id: string;
+  text: string;
+  raw: string;
+  meaning: string;
+  position: string;
+}
+
 export const getLastEdit = async (): Promise<lastData> => {
   const { data } = await axios.get("/api/last_edit/");
   return data;

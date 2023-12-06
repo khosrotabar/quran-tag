@@ -1,4 +1,4 @@
-import { pageOuput } from "@/api";
+import { mappedArrayProps, pageOuput } from "@/api";
 import { activeVerseProps } from "@/shared";
 import { Dispatch } from "react";
 
@@ -39,12 +39,12 @@ export const convertToFarsiDigits = (number: string) => {
 };
 
 export const generateArrayFromString = (
-  word: string,
+  text: string,
   wordId: string,
   raw: string,
   quranResponseCopy: pageOuput[],
 ) => {
-  const words = word.split(" ");
+  const words = text.split(" ");
   const raws = raw.split(" ");
 
   const mappedArray = words.map((word, index) => {
@@ -60,10 +60,65 @@ export const generateArrayFromString = (
       id: wordId,
       raw: raws[index],
       meaning: foundObject ? foundObject.meaning : "",
+      position: (index + 1).toString(),
     };
   });
 
-  return mappedArray;
+  console.log(quranResponseCopy);
+
+  console.log(mergePositions(mappedArray, quranResponseCopy));
+
+  return mergePositions(mappedArray, quranResponseCopy);
+};
+
+const mergePositions = (
+  arrA: mappedArrayProps[],
+  arrB: pageOuput[],
+): (mappedArrayProps | null)[] => {
+  const result: (mappedArrayProps | null)[] = [...arrA];
+
+  arrB.forEach((itemB) => {
+    const positions = itemB.position.split(",").map((pos) => pos.trim());
+
+    if (positions.length > 1) {
+      const existingIndices = positions.map((pos) =>
+        result.findIndex((itemA) => itemA?.position === pos),
+      );
+
+      const existingItems = existingIndices.map((index) =>
+        index !== -1 ? { ...result[index] } : null,
+      );
+
+      const mergedText = existingItems
+        .map((item) => (item ? item.text : ""))
+        .join(" ");
+      const mergedRaw = existingItems
+        .map((item) => (item ? item.raw : ""))
+        .join(" ");
+
+      const mergedPositions = positions.join(", ");
+
+      const updatedItemIndex = existingIndices.find((index) => index !== -1);
+
+      if (updatedItemIndex !== undefined) {
+        result[updatedItemIndex] = {
+          text: mergedText,
+          raw: mergedRaw,
+          meaning: itemB.meaning,
+          position: mergedPositions,
+          id: itemB.id || "", // Ensure id is defined
+        };
+      }
+
+      existingIndices.forEach((index) => {
+        if (index !== updatedItemIndex) {
+          result[index] = null;
+        }
+      });
+    }
+  });
+
+  return result;
 };
 
 export const getQuranResponseObject = (
@@ -171,3 +226,19 @@ export const activeVersehandler = (
 
   setActiveVerse(updatedArray);
 };
+
+// assume A=[..., {id: "1_2", text: "save", raw:"save", meaning: "save", position: "10"}, {id: "1_2", text: "money", raw:"money", meaning: "money", position: "11"}, ...]
+// and B=[...,{id: "1_2", word:"Ali Ahmadi", meaning:"Ali Ahmadi", position: "10, 11"}, {id: "1_2", word:"Moradi", meaning:"Moradi", position: "12"},...].
+// according to B if there is "," in position for example here "10, 11", find positions of 10 and 11 in Array A and merge
+// {id: "1_2", text: "save", raw:"save", meaning: "save", position: "10"} and {id: "1_2", text: "money", raw:"money", meaning: "money", position: "11"}
+// to {id: "1_2", text: "save money", raw:"save money", meaning: "save money", position: "10, 11"} and change {id: "1_2", text: "money", raw:"money", meaning: "money", position: "11"} with null.
+// final Array A should be [..., {id: "1_2", text: "save money", raw:"save money", meaning: "save money", position: "10, 11"}, null,...]. do it in typescript compeletly dynamic
+// type A = {id: string;
+// text: string;
+// raw: string;
+// meaning: string;
+// position: string;}
+// type B = {meaning: string;
+// position: string;
+// word: string;
+// id?: string;}

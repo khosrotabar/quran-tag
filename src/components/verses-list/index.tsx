@@ -85,7 +85,7 @@ const VrsesList: React.FC<VrsesListProps> = ({
                       lastEditId={lastEditId}
                       quranResponse={response || []}
                       innerIndex={innerIndex}
-                      page={page}
+                      page={verse.page}
                     />
                   );
                 })}

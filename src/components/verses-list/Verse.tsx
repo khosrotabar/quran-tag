@@ -90,36 +90,12 @@ const Verse: React.FC<VerseProps> = ({
         verse.raw,
         quranResponseCopy,
       ).map((word, index) => {
-        const isSame = quranResponseCopy.find(
-          (el) =>
-            el.position.includes((index + 1).toString()) &&
-            el.word.includes(" "),
-        );
-
-        if (isSame) {
-          word.text = isSame.word;
-        }
-
         return (
           <div key={verse.text + verse.id + index}>
-            {!isSame ? (
+            {word && (
               <VerseItem
                 index={index}
                 word={word}
-                activeVerse={activeVerse}
-                meaning={word.meaning}
-                reservedArray={reservedArray}
-                quranResponseCopy={quranResponseCopy}
-                tagInput={tagInput}
-                setQuranResponseCopy={setQuranResponseCopy}
-                setActiveVerse={setActiveVerse}
-                setReservedArray={setReservedArray}
-                setTagInput={setTagInput}
-              />
-            ) : (
-              <VerseItem
-                index={index}
-                word={{ text: isSame.word, id: word.id }}
                 activeVerse={activeVerse}
                 meaning={word.meaning}
                 reservedArray={reservedArray}
