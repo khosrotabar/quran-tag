@@ -9,7 +9,7 @@ export default {
       },
       fontFamily: {
         quranfont: ["QuranFont"],
-        rranyekan: ["IranYekan"],
+        iranyekan: ["IranYekan"],
       },
     },
   },

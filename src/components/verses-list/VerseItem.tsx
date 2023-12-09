@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { CgClose } from "react-icons/cg";
+import { IconContext } from "react-icons";
 import clsx from "clsx";
 import { VerseItemProps } from "@/shared";
 import {
@@ -22,7 +24,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
   setTagInput,
 }) => {
   const [isClicked, setIsClicked] = useState<boolean>(false);
-  const [inputVal, setInputVal] = useState<string | undefined>("");
+  const [inputVal, setInputVal] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
 
   const reservedWordsHandler = () => {
@@ -35,8 +37,8 @@ const VerseItem: React.FC<VerseItemProps> = ({
   };
 
   const keyboardHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === "Enter") {
-      if (inputRef.current?.value === "") {
+    if (event?.key === "Enter") {
+      if (inputVal === "") {
         setReservedArray([]);
         if (meaning !== "") {
           setQuranResponseCopy(deleteMeaning(quranResponseCopy, index));
@@ -47,7 +49,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
           index,
         );
         const newReservedArray = reservedArray.map((reserve) => {
-          reserve.meaning = inputRef.current?.value!;
+          reserve.meaning = inputVal;
           return reserve;
         });
 
@@ -76,6 +78,14 @@ const VerseItem: React.FC<VerseItemProps> = ({
     }
   }, [tagInput]);
 
+  const closeInputHandler = () => {
+    setInputVal("");
+    setReservedArray([]);
+    if (meaning !== "") {
+      setQuranResponseCopy(deleteMeaning(quranResponseCopy, index));
+    }
+  };
+
   return (
     <div>
       <div
@@ -90,16 +100,26 @@ const VerseItem: React.FC<VerseItemProps> = ({
       </div>
       {activeVerse?.[activeVerse.length - 1]?.id === word.id &&
         activeVerse?.[activeVerse.length - 1]?.position === index && (
-          <div className="absolute z-10">
+          <div className="absolute z-10 flex">
             <input
               type="text"
-              className="w-[300px] rounded-md border-2 border-slate-800 bg-white px-2 py-1 text-sm outline-none"
+              className="font-iranyekan absolute w-[250px] rounded-md border-2 border-slate-800 bg-white px-2 py-1 text-[20px] text-[#303030] outline-none"
               placeholder="معنی"
               onKeyUp={keyboardHandler}
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
               ref={inputRef}
             />
+            <IconContext.Provider
+              value={{
+                color: "red",
+                size: "24",
+                className: "z-50 mt-2 mr-[220px] cursor-pointer",
+                attr: { onClick: closeInputHandler },
+              }}
+            >
+              <CgClose />
+            </IconContext.Provider>
           </div>
         )}
     </div>

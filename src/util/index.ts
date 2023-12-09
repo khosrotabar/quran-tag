@@ -1,6 +1,7 @@
 import { mappedArrayProps, pageOuput } from "@/api";
 import { activeVerseProps } from "@/shared";
 import { Dispatch } from "react";
+import { toast } from "react-toastify";
 
 type InputArrayItem = {
   meaning: string;
@@ -14,6 +15,31 @@ type OutputArrayItem = {
   position: string;
   word: string;
   id?: string;
+};
+
+export const notify = (
+  text: string,
+  type: "error" | "success" | "info" | "warn",
+) => {
+  let toastType = toast.warn;
+  if (type === "success") {
+    toastType = toast.success;
+  } else if (type === "info") {
+    toastType = toast.info;
+  } else if (type === "error") {
+    toastType = toast.error;
+  }
+
+  toastType(text, {
+    position: "top-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
 };
 
 export const convertToFarsiDigits = (number: string) => {

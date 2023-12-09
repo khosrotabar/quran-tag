@@ -4,7 +4,7 @@ import { IconContext } from "react-icons";
 import { ClockLoader } from "react-spinners";
 import clsx from "clsx";
 import { toast } from "react-toastify";
-import { convertToFarsiDigits, generateArrayFromString } from "@/util";
+import { convertToFarsiDigits, generateArrayFromString, notify } from "@/util";
 import VerseItem from "./VerseItem";
 import { pageOuput, submitTags } from "@/api";
 import { VerseProps, activeVerseProps } from "@/shared";
@@ -23,19 +23,6 @@ const Verse: React.FC<VerseProps> = ({
   const [reservedArray, setReservedArray] = useState<pageOuput[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
   const [isArrayChanged, setIsArrayChanged] = useState<boolean>(false);
-
-  const notify = () => {
-    toast.error("!مشکلی در ارسال بوجود آمده است", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
 
   useEffect(() => {
     if (reservedArray.length === 0) {
@@ -73,7 +60,7 @@ const Verse: React.FC<VerseProps> = ({
     const newArray = quranResponseCopy.map(({ id, ...rest }) => rest);
     const data = await submitTags(newArray, pageToSubmit, verse.id);
     if (!data) {
-      notify();
+      notify("!مشکلی در سرور بوجود آمده است", "error");
     }
     localStorage.setItem("lastPageEdited", page.toString());
     setIsLoading(false);
@@ -109,7 +96,7 @@ const Verse: React.FC<VerseProps> = ({
       })}
       <div
         className={clsx(
-          "flex h-[23px] w-[23px] items-center justify-center rounded-full pt-[3px] font-rranyekan text-sm font-normal text-white",
+          "font-iranyekan flex h-[23px] w-[23px] items-center justify-center rounded-full pt-[3px] text-sm font-normal text-white",
           isArrayChanged ? "bg-lime-600" : "bg-[#cdb380]",
         )}
       >

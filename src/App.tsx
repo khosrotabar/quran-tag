@@ -1,7 +1,7 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { AxiosError } from "axios";
 import Home from "./pages/home/page";
+import { AxiosError } from "axios";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
   const route = createBrowserRouter([
@@ -40,7 +40,6 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={route} />
       </QueryClientProvider>
-      ;
     </div>
   );
 }

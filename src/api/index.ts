@@ -55,3 +55,15 @@ export const submitTags = async (
     return undefined;
   }
 };
+
+export const getCopyBoard = async (
+  versId: string,
+): Promise<{ [key: string]: string } | undefined> => {
+  try {
+    const { data } = await axios.get(`/api/words/${versId}/`);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return undefined;
+  }
+};
