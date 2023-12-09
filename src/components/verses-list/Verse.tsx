@@ -3,7 +3,6 @@ import { TiTick } from "react-icons/ti";
 import { IconContext } from "react-icons";
 import { ClockLoader } from "react-spinners";
 import clsx from "clsx";
-import { toast } from "react-toastify";
 import { convertToFarsiDigits, generateArrayFromString, notify } from "@/util";
 import VerseItem from "./VerseItem";
 import { pageOuput, submitTags } from "@/api";
@@ -96,7 +95,7 @@ const Verse: React.FC<VerseProps> = ({
       })}
       <div
         className={clsx(
-          "font-iranyekan flex h-[23px] w-[23px] items-center justify-center rounded-full pt-[3px] text-sm font-normal text-white",
+          "flex h-[23px] w-[23px] items-center justify-center rounded-full pt-[3px] font-iranyekan text-sm font-normal text-white",
           isArrayChanged ? "bg-lime-600" : "bg-[#cdb380]",
         )}
       >

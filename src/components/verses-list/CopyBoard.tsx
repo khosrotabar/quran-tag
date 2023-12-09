@@ -18,9 +18,11 @@ const CopyBoard: React.FC<CopyBoardProps> = ({ versId }) => {
 
   useEffect(() => {
     if (data) {
-      setWordsArray(
-        Object.entries(data).map(([key, value]) => ({ [key]: value })),
-      );
+      const dataArray = Object.entries(data).map(([key, value]) => ({
+        [key]: value,
+      }));
+
+      setWordsArray(dataArray);
     }
   }, [data]);
 
@@ -62,7 +64,7 @@ const CopyBoard: React.FC<CopyBoardProps> = ({ versId }) => {
             <div className="flex w-[40%] justify-center text-[18px] font-[600]">
               {Object.keys(word)[0]}
             </div>
-            <div className="font-iranyekan relative flex w-[60%] cursor-pointer justify-center text-[18px]">
+            <div className="relative flex w-[60%] cursor-pointer justify-center font-iranyekan text-[18px]">
               <CopyToClipboard
                 text={Object.values(word)[0]}
                 onCopy={() => handleCopy(index)}

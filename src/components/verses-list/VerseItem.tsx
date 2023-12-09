@@ -103,7 +103,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
           <div className="absolute z-10 flex">
             <input
               type="text"
-              className="font-iranyekan absolute w-[250px] rounded-md border-2 border-slate-800 bg-white px-2 py-1 text-[20px] text-[#303030] outline-none"
+              className="absolute w-[350px] rounded-md border-2 border-slate-800 bg-white px-2 py-2 font-iranyekan text-[20px] text-[#303030] outline-none"
               placeholder="معنی"
               onKeyUp={keyboardHandler}
               value={inputVal}
@@ -114,7 +114,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
               value={{
                 color: "red",
                 size: "24",
-                className: "z-50 mt-2 mr-[220px] cursor-pointer",
+                className: "z-50 mt-3 mr-[320px] cursor-pointer",
                 attr: { onClick: closeInputHandler },
               }}
             >
