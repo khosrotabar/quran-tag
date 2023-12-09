@@ -1,14 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
 import { BarLoader } from "react-spinners";
 import VrsesList from "../../components/verses-list";
 import { quran_data } from "@/data";
-import { getLastEdit } from "@/api";
 
 const Home = () => {
-  const { data, error, isLoading } = useQuery("lastEdit", getLastEdit);
   let page;
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const location = useLocation();
   const urlParams = new URLSearchParams(location.search);
   const urlPage = parseInt(urlParams.get("page")!);
@@ -17,6 +15,16 @@ const Home = () => {
   const maxPage =
     quran_data[quranSuraLength].data[quranLastDataLength].currentPage;
   const navigate = useNavigate();
+  const lastPageEdited: string | null = localStorage.getItem("lastPageEdited");
+
+  useEffect(() => {
+    if (lastPageEdited) {
+      setIsLoading(false);
+      navigate(`/?page=${lastPageEdited}`);
+    } else {
+      setIsLoading(false);
+    }
+  }, []);
 
   // javascript - temporary function
 
@@ -44,13 +52,6 @@ const Home = () => {
 
   // javascript - temporary function
 
-  useEffect(() => {
-    if (data) {
-      const lastEditpage = data.page;
-      navigate(`/?page=${lastEditpage}`);
-    }
-  }, [data]);
-
   if (urlPage > 0 && urlPage < maxPage) {
     page = urlPage;
   } else if (urlPage >= maxPage) {
@@ -69,26 +70,9 @@ const Home = () => {
     );
   }
 
-  if (error) {
-    return (
-      <div
-        dir="rtl"
-        className="flex h-screen w-screen select-none items-center justify-center"
-      >
-        <span className="rounded-md bg-red-600 px-4 py-2 text-base font-bold text-white shadow-md">
-          مشکلی در سرور بوجود آمده است. لطفا بعد از مدتی دوباره امتحان کنید.
-        </span>
-      </div>
-    );
-  }
-
-  if (!data) {
-    return null;
-  }
-
   return (
     <div dir="rtl" className="select-none">
-      <VrsesList page={page} lastEditId={data?.id} isLoading={false} />
+      <VrsesList page={page} />
     </div>
   );
 };

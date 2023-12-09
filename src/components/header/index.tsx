@@ -3,20 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { IconContext } from "react-icons";
 import QuranList from "./QuranList";
+import { convertToLatinDigits } from "@/util";
 
 type HeaderProps = {
   page: number;
   lastPage: number;
-  isLoading: boolean;
 };
 
-const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
+const Header: React.FC<HeaderProps> = ({ page, lastPage }) => {
   const [inputVal, setInputVal] = useState<string>("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    !isLoading && setInputVal(page.toString());
-  }, [page, isLoading]);
+    setInputVal(page.toString());
+  }, [page]);
 
   const inputHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -47,7 +47,7 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
             type="text"
             value={inputVal}
             onKeyDown={inputHandler}
-            onChange={(e) => setInputVal(e.target.value)}
+            onChange={(e) => setInputVal(convertToLatinDigits(e.target.value))}
             className="w-[70px] border-none bg-inherit text-center text-sm text-white outline-none placeholder:text-white placeholder:opacity-50"
             placeholder="page"
           />
@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ page, lastPage, isLoading }) => {
         </div>
       </div>
       <div className="absolute right-0 top-0 flex h-[46px] w-[50%] items-center justify-center rounded-r-[10px] bg-[#003648]">
-        {!isLoading && <QuranList page={page} />}
+        <QuranList page={page} />
       </div>
     </div>
   );

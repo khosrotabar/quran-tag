@@ -34,12 +34,10 @@ export type VerseProps = {
   innerIndex: number;
   verse: verseProps;
   quranResponse: pageOuput[];
-  lastEditId: string | undefined;
   page: number;
+  pageToSubmit: number;
 };
 
 export type VrsesListProps = {
   page: number;
-  isLoading: boolean;
-  lastEditId: string | undefined;
 };

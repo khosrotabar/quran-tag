@@ -13,8 +13,8 @@ const Verse: React.FC<VerseProps> = ({
   innerIndex,
   verse,
   quranResponse,
-  lastEditId,
   page,
+  pageToSubmit,
 }) => {
   let currentArray: pageOuput[] = [...quranResponse];
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -23,10 +23,6 @@ const Verse: React.FC<VerseProps> = ({
   const [reservedArray, setReservedArray] = useState<pageOuput[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
   const [isArrayChanged, setIsArrayChanged] = useState<boolean>(false);
-  const bgColor =
-    lastEditId === verse.id && !isArrayChanged
-      ? "bg-[#66593f]"
-      : "bg-[#cdb380]";
 
   const notify = () => {
     toast.error("!مشکلی در ارسال بوجود آمده است", {
@@ -75,10 +71,11 @@ const Verse: React.FC<VerseProps> = ({
     setIsArrayChanged(false);
     setIsLoading(true);
     const newArray = quranResponseCopy.map(({ id, ...rest }) => rest);
-    const data = await submitTags(newArray, page, verse.id);
+    const data = await submitTags(newArray, pageToSubmit, verse.id);
     if (!data) {
       notify();
     }
+    localStorage.setItem("lastPageEdited", page.toString());
     setIsLoading(false);
   };
 
@@ -113,7 +110,7 @@ const Verse: React.FC<VerseProps> = ({
       <div
         className={clsx(
           "flex h-[23px] w-[23px] items-center justify-center rounded-full pt-[3px] font-rranyekan text-sm font-normal text-white",
-          isArrayChanged ? "bg-lime-600" : bgColor,
+          isArrayChanged ? "bg-lime-600" : "bg-[#cdb380]",
         )}
       >
         {isLoading ? (

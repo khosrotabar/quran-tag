@@ -38,6 +38,28 @@ export const convertToFarsiDigits = (number: string) => {
   return farsiNumber;
 };
 
+export const convertToLatinDigits = (number: string) => {
+  const farsiDigits: { [key: string]: string } = {
+    "۰": "0",
+    "۱": "1",
+    "۲": "2",
+    "۳": "3",
+    "۴": "4",
+    "۵": "5",
+    "۶": "6",
+    "۷": "7",
+    "۸": "8",
+    "۹": "9",
+  };
+
+  let farsiNumber = "";
+  for (let i = 0; i < number.length; i++) {
+    const digit = number.charAt(i);
+    farsiNumber += farsiDigits[digit] || digit;
+  }
+  return farsiNumber;
+};
+
 export const generateArrayFromString = (
   text: string,
   wordId: string,
@@ -64,7 +86,7 @@ export const generateArrayFromString = (
     };
   });
 
-  console.log(quranResponseCopy);
+  // console.log(quranResponseCopy);
 
   // console.log(mergePositions(mappedArray, quranResponseCopy));
 
@@ -237,19 +259,3 @@ export const activeVersehandler = (
 
   setActiveVerse(updatedArray);
 };
-
-// assume A=[..., {id: "1_2", text: "save", raw:"save", meaning: "save", position: "10"}, {id: "1_2", text: "money", raw:"money", meaning: "money", position: "11"}, ...]
-// and B=[...,{id: "1_2", word:"Ali Ahmadi", meaning:"Ali Ahmadi", position: "10, 11"}, {id: "1_2", word:"Moradi", meaning:"Moradi", position: "12"},...].
-// according to B if there is "," in position for example here "10, 11", find positions of 10 and 11 in Array A and merge
-// {id: "1_2", text: "save", raw:"save", meaning: "save", position: "10"} and {id: "1_2", text: "money", raw:"money", meaning: "money", position: "11"}
-// to {id: "1_2", text: "save money", raw:"save money", meaning: "save money", position: "10, 11"} and change {id: "1_2", text: "money", raw:"money", meaning: "money", position: "11"} with null.
-// final Array A should be [..., {id: "1_2", text: "save money", raw:"save money", meaning: "save money", position: "10, 11"}, null,...]. do it in typescript compeletly dynamic
-// type A = {id: string;
-// text: string;
-// raw: string;
-// meaning: string;
-// position: string;}
-// type B = {meaning: string;
-// position: string;
-// word: string;
-// id?: string;}
