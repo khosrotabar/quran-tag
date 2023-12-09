@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { ScaleLoader } from "react-spinners";
-import CopyToClipboard from "react-copy-to-clipboard";
 import { getCopyBoard } from "@/api";
 import { notify } from "@/util";
 
@@ -26,11 +25,18 @@ const CopyBoard: React.FC<CopyBoardProps> = ({ versId }) => {
     }
   }, [data]);
 
-  const handleCopy = (index: number) => {
-    setCopied({ [index]: true });
+  const copyToClipboard = (text: string, index: number) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopied({ [index]: true });
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+      });
     setTimeout(() => {
       setCopied({ [index]: false });
-    }, 4000); // 4 seconds in milliseconds
+    }, 4000);
   };
 
   if (error) {
@@ -65,12 +71,11 @@ const CopyBoard: React.FC<CopyBoardProps> = ({ versId }) => {
               {Object.keys(word)[0]}
             </div>
             <div className="relative flex w-[60%] cursor-pointer justify-center font-iranyekan text-[18px]">
-              <CopyToClipboard
-                text={Object.values(word)[0]}
-                onCopy={() => handleCopy(index)}
+              <span
+                onClick={() => copyToClipboard(Object.values(word)[0], index)}
               >
-                <span>{Object.values(word)[0]}</span>
-              </CopyToClipboard>
+                {Object.values(word)[0]}
+              </span>
               {copied[index] && (
                 <span
                   dir="ltr"
