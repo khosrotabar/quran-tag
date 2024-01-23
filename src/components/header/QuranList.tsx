@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { FaCheck } from "react-icons/fa6";
 import { LuChevronsUpDown } from "react-icons/lu";
@@ -11,20 +11,23 @@ type QuranListProps = {
 };
 
 const QuranList: React.FC<QuranListProps> = ({ page }) => {
-  const [selected, setSelected] = useState({ text: "" });
+  const matchedSuras = quran_data.filter((item) =>
+    item.data.some((data) => data.page === page),
+  );
+  const [selected, setSelected] = useState({
+    text: "",
+  });
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
-  const matchedSuras = quran_data.filter((item) =>
-    item.data.some((data) => data.currentPage === page),
-  );
-
-  selected.text = matchedSuras[0].title.text;
+  useEffect(() => {
+    setSelected({ text: matchedSuras[0].title.text });
+  }, [page]);
 
   const clickHandler = (value: { text: string }) => {
     setSelected(value);
     const foundData = quran_data.find((item) => item.title.text === value.text);
-    const page = foundData?.title.currentPage;
+    const page = foundData?.title.page;
 
     navigate(`/?page=${page}`);
   };

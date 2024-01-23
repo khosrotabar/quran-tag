@@ -5,7 +5,7 @@ import IslamicBanner from "@/assets/images/vecteezy_islamic-banner.webp";
 import { getPage, pageOuput } from "@/api";
 import Verse from "./Verse";
 import { VrsesListProps } from "@/shared";
-import CopyBoard from "./CopyBoard";
+// import CopyBoard from "./CopyBoard";
 
 const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
   const [quranResponse, setQuranResponse] = useState<pageOuput[][]>([]);
@@ -16,7 +16,7 @@ const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
     return quran_data
       .map((sura) => ({
         ...sura,
-        data: sura.data.filter((verse) => verse.currentPage === page),
+        data: sura.data.filter((verse) => verse.page === page),
       }))
       .filter((sura) => sura.data.length > 0);
   }, [quran_data, page]);
@@ -45,15 +45,15 @@ const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
 
   return (
     <div className="mx-auto flex h-screen w-[600px] items-center justify-center font-quranfont">
-      <div className="relative flex h-[80%] w-full flex-col justify-between gap-6 rounded-[10px] bg-orange-50 px-[16px] py-[10px] pb-[60px] shadow-md">
-        <div>
-          <Header page={page} lastPage={lastPage} />
+      <div className="relative h-[90%] w-full rounded-[10px] bg-orange-50 px-[16px] py-[10px] pb-[60px] shadow-md">
+        <Header page={page} lastPage={lastPage} />
+        <div className="h-[94%] overflow-y-auto overflow-x-hidden">
           {quranDataFiltered.map((sura, index) => (
             <div
               key={index}
               className="flex flex-col items-center justify-center gap-[16px]"
             >
-              {sura.title.currentPage === page && (
+              {sura.title.page === page && (
                 <div className="relative mt-3 flex w-full flex-col flex-wrap items-center gap-9">
                   <img
                     src={IslamicBanner}
@@ -89,7 +89,7 @@ const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
             </div>
           ))}
         </div>
-        <CopyBoard versId={quranDataFiltered[0].data[0].id} />
+        {/* <CopyBoard versId={quranDataFiltered[0].data[0].id} /> */}
       </div>
     </div>
   );

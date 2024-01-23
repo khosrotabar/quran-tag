@@ -12,8 +12,7 @@ const Home = () => {
   const urlPage = parseInt(urlParams.get("page")!);
   const quranSuraLength = quran_data.length - 1;
   const quranLastDataLength = quran_data[quranSuraLength].data.length - 1;
-  const maxPage =
-    quran_data[quranSuraLength].data[quranLastDataLength].currentPage;
+  const maxPage = quran_data[quranSuraLength].data[quranLastDataLength].page;
   const navigate = useNavigate();
   const lastPageEdited: string | null = localStorage.getItem("lastPageEdited");
 
@@ -38,7 +37,7 @@ const Home = () => {
   //     quranData.title.currentPage = page;
   //     quranData.data[0].currentPage = page;
   //     for (var i = 1; i < quranData.data.length; i++) {
-  //       page++;
+  //       // page++;
   //       quranData.data[i].currentPage = page;
   //     }
   //   }

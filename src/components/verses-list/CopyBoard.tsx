@@ -58,7 +58,7 @@ const CopyBoard: React.FC<CopyBoardProps> = ({ versId }) => {
 
   return (
     <div
-      className="lex max-h-[400px] flex-col items-start overflow-y-auto px-[20px]"
+      className="lex h-[30%] flex-col items-start overflow-y-auto px-[20px]"
       dir="rtl"
     >
       {wordsArray.map((word, index) => {
