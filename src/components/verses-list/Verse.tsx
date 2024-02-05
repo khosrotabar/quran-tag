@@ -5,7 +5,7 @@ import { ClockLoader } from "react-spinners";
 import clsx from "clsx";
 import { convertToFarsiDigits, generateArrayFromString, notify } from "@/util";
 import VerseItem from "./VerseItem";
-import { pageOuput, submitTags } from "@/api";
+import { pageOuput, submitTags } from "@/services/api";
 import { VerseProps, activeVerseProps } from "@/shared";
 
 const Verse: React.FC<VerseProps> = ({

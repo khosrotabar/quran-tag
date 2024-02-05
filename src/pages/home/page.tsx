@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { BarLoader } from "react-spinners";
 import VrsesList from "../../components/verses-list";
 import { quran_data } from "@/data";
+import Document from "@/components/document/Document";
 
 const Home = () => {
   let page;
@@ -70,8 +71,12 @@ const Home = () => {
   }
 
   return (
-    <div dir="rtl" className="select-none">
+    <div
+      dir="rtl"
+      className="flex h-full select-none items-center justify-center"
+    >
       <VrsesList page={page} />
+      <Document page={page} />
     </div>
   );
 };

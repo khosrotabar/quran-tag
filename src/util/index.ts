@@ -1,4 +1,4 @@
-import { mappedArrayProps, pageOuput } from "@/api";
+import { mappedArrayProps, pageOuput } from "@/services/api";
 import { activeVerseProps } from "@/shared";
 import { Dispatch } from "react";
 import { toast } from "react-toastify";

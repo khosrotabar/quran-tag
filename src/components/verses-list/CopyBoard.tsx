@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { ScaleLoader } from "react-spinners";
-import { getCopyBoard } from "@/api";
+import { getCopyBoard } from "@/services/api";
 import { notify } from "@/util";
 
 type CopyBoardProps = {

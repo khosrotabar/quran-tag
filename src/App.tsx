@@ -36,7 +36,7 @@ function App() {
   });
 
   return (
-    <div>
+    <div className="h-screen">
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={route} />
       </QueryClientProvider>

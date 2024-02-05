@@ -1,3 +1,5 @@
+import { ocrBaseUrl } from "@/config";
+import { DocumentReaderType } from "@/shared";
 import axios from "axios";
 
 interface lastData {
@@ -66,4 +68,10 @@ export const getCopyBoard = async (
     console.log(err);
     return undefined;
   }
+};
+
+export const getJsonOcr = async (page: number): Promise<DocumentReaderType> => {
+  const { data } = await axios.get(`${ocrBaseUrl}/ocr/${page}.json`);
+
+  return data;
 };

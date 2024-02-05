@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { quran_data } from "@/data";
 import Header from "../header";
 import IslamicBanner from "@/assets/images/vecteezy_islamic-banner.webp";
-import { getPage, pageOuput } from "@/api";
+import { getPage, pageOuput } from "@/services/api";
 import Verse from "./Verse";
 import { VrsesListProps } from "@/shared";
 // import CopyBoard from "./CopyBoard";
@@ -44,7 +44,7 @@ const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
   }, [quranDataFiltered, page]);
 
   return (
-    <div className="mx-auto flex h-screen w-[600px] items-center justify-center font-quranfont">
+    <div className="flex h-full w-[600px] items-center justify-center font-quranfont">
       <div className="relative h-[90%] w-full rounded-[10px] bg-orange-50 px-[16px] py-[10px] pb-[60px] shadow-md">
         <Header page={page} lastPage={lastPage} />
         <div className="h-[94%] overflow-y-auto overflow-x-hidden">
