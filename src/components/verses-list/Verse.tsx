@@ -14,6 +14,7 @@ const Verse: React.FC<VerseProps> = ({
   quranResponse,
   page,
   pageToSubmit,
+  parentRef,
 }) => {
   let currentArray: pageOuput[] = [...quranResponse];
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -84,6 +85,7 @@ const Verse: React.FC<VerseProps> = ({
                 reservedArray={reservedArray}
                 quranResponseCopy={quranResponseCopy}
                 tagInput={tagInput}
+                parentRef={parentRef}
                 setQuranResponseCopy={setQuranResponseCopy}
                 setActiveVerse={setActiveVerse}
                 setReservedArray={setReservedArray}

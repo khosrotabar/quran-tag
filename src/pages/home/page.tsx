@@ -71,10 +71,7 @@ const Home = () => {
   }
 
   return (
-    <div
-      dir="rtl"
-      className="flex h-full select-none items-center justify-center"
-    >
+    <div dir="rtl" className="flex h-full items-center justify-center gap-5">
       <VrsesList page={page} />
       <Document page={page} />
     </div>

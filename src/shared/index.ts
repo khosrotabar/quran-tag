@@ -1,5 +1,5 @@
 import { pageOuput } from "@/services/api";
-import { Dispatch } from "react";
+import { Dispatch, RefObject } from "react";
 
 export interface verseProps {
   page: number;
@@ -24,6 +24,7 @@ export type VerseItemProps = {
   reservedArray: pageOuput[];
   quranResponseCopy: pageOuput[];
   tagInput: string;
+  parentRef: RefObject<HTMLDivElement>;
   setQuranResponseCopy: Dispatch<pageOuput[]>;
   setActiveVerse: Dispatch<activeVerseProps[]>;
   setReservedArray: Dispatch<pageOuput[]>;
@@ -36,6 +37,7 @@ export type VerseProps = {
   quranResponse: pageOuput[];
   page: number;
   pageToSubmit: number;
+  parentRef: RefObject<HTMLDivElement>;
 };
 
 export type VrsesListProps = {

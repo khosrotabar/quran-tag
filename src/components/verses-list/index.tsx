@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+
 import { quran_data } from "@/data";
 import Header from "../header";
 import IslamicBanner from "@/assets/images/vecteezy_islamic-banner.webp";
@@ -11,6 +12,7 @@ const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
   const [quranResponse, setQuranResponse] = useState<pageOuput[][]>([]);
   const data = quran_data[quran_data.length - 1].data;
   const lastPage = data[data.length - 1].page;
+  const parentRef = useRef<HTMLDivElement | null>(null);
 
   const quranDataFiltered = useMemo(() => {
     return quran_data
@@ -44,8 +46,11 @@ const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
   }, [quranDataFiltered, page]);
 
   return (
-    <div className="flex h-full w-[600px] items-center justify-center font-quranfont">
-      <div className="relative h-[90%] w-full rounded-[10px] bg-orange-50 px-[16px] py-[10px] pb-[60px] shadow-md">
+    <div
+      className="flex h-full w-[600px] items-center justify-center font-quranfont"
+      ref={parentRef}
+    >
+      <div className="relative h-[90%] w-full bg-orange-50 px-[16px] py-[10px] pb-[60px] shadow-md">
         <Header page={page} lastPage={lastPage} />
         <div className="h-[94%] overflow-y-auto overflow-x-hidden">
           {quranDataFiltered.map((sura, index) => (
@@ -82,6 +87,7 @@ const VrsesList: React.FC<VrsesListProps> = ({ page }) => {
                       innerIndex={innerIndex}
                       page={page}
                       pageToSubmit={verse.page}
+                      parentRef={parentRef}
                     />
                   );
                 })}

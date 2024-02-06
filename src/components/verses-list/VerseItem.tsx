@@ -18,6 +18,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
   reservedArray,
   quranResponseCopy,
   tagInput,
+  parentRef,
   setQuranResponseCopy,
   setActiveVerse,
   setReservedArray,
@@ -26,6 +27,12 @@ const VerseItem: React.FC<VerseItemProps> = ({
   const [isClicked, setIsClicked] = useState<boolean>(false);
   const [inputVal, setInputVal] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
+  const childRef = useRef<HTMLDivElement | null>(null);
+  const [childPosition, setChildPosition] = useState<{
+    top: number;
+    left: any;
+    right: any;
+  }>({ top: 40, left: 0, right: "auto" });
 
   const reservedWordsHandler = () => {
     setIsClicked(!isClicked);
@@ -86,11 +93,34 @@ const VerseItem: React.FC<VerseItemProps> = ({
     }
   };
 
+  const checkChildPosition = () => {
+    const parentRect = parentRef.current?.getBoundingClientRect();
+    const childRect = childRef.current?.getBoundingClientRect();
+
+    if (parentRect && childRect) {
+      if (childRect.left < parentRect.left) {
+        setChildPosition({ ...childPosition, left: 0, right: "auto" });
+      } else if (childRect.right > parentRect.right) {
+        setChildPosition({ ...childPosition, left: "auto", right: 0 });
+      }
+    }
+
+    requestAnimationFrame(checkChildPosition);
+  };
+
+  useEffect(() => {
+    checkChildPosition();
+
+    return () => {
+      cancelAnimationFrame(requestAnimationFrame(checkChildPosition));
+    };
+  }, [childPosition]);
+
   return (
-    <div>
+    <div className="relative">
       <div
         className={clsx(
-          "relative cursor-pointer select-none rounded-[4px]",
+          "cursor-pointer select-none rounded-[4px]",
           isClicked && "bg-[#003648] text-white",
           meaning !== "" && !isClicked && "bg-[#b1331da4] text-white",
         )}
@@ -100,10 +130,14 @@ const VerseItem: React.FC<VerseItemProps> = ({
       </div>
       {activeVerse?.[activeVerse.length - 1]?.id === word.id &&
         activeVerse?.[activeVerse.length - 1]?.position === index && (
-          <div className="absolute z-10 flex">
+          <div
+            className="absolute z-50 flex items-center"
+            ref={childRef}
+            style={childPosition}
+          >
             <input
               type="text"
-              className="absolute w-[350px] rounded-md border-2 border-slate-800 bg-white px-2 py-2 font-iranyekan text-[20px] text-[#303030] outline-none"
+              className="w-[250px] rounded-md border-2 border-slate-800 bg-white px-2 py-2 font-iranyekan text-[20px] text-[#303030] outline-none"
               placeholder="معنی"
               onKeyUp={keyboardHandler}
               value={inputVal}
@@ -114,7 +148,7 @@ const VerseItem: React.FC<VerseItemProps> = ({
               value={{
                 color: "red",
                 size: "24",
-                className: "z-50 mt-3 mr-[320px] cursor-pointer",
+                className: "absolute left-3 cursor-pointer",
                 attr: { onClick: closeInputHandler },
               }}
             >

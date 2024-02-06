@@ -25,7 +25,9 @@ export const TextBox: FC<TextBoxProps> = ({ boxData }) => {
       ref={boxRef}
       className={clsx(
         "absolute",
-        boxData?.type === "text" ? "bg-[#f4b387]" : "bg-primary/50",
+        boxData?.type === "text"
+          ? "bg-[#f4b387] bg-opacity-70"
+          : "bg-primary/50",
       )}
       style={{
         left: `${boxData?.relativeBoxLeft}%`,
